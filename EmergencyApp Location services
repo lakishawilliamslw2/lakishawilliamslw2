@@ -1,0 +1,1451 @@
+import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
+import '../login/login_widget.dart';
+import '../register/register_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class HomePageWidget extends StatefulWidget {
+  const HomePageWidget({Key? key}) : super(key: key);
+
+  @override
+  _HomePageWidgetState createState() => _HomePageWidgetState();
+}
+
+class _HomePageWidgetState extends State<HomePageWidget> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LoginWidget(),
+        ),
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
+        automaticallyImplyLeading: false,
+        title: Text(
+          'SPLASHSCREEN',
+          style: FlutterFlowTheme.of(context).bodyText1.override(
+                fontFamily: 'Poppins',
+                color: Color(0xFFEC1417),
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+      ),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginWidget(),
+                    ),
+                  );
+                },
+                child: Image.network(
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ_8vBF65kC9qzcwTTcgSvtMm69LUtiMmbExXOaH6s5O-iMuBB7gIxGxAx2zGAmTXA3_E&usqp=CAU',
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              FFButtonWidget(
+                onPressed: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RegisterWidget(),
+                    ),
+                  );
+                },
+                text: 'Get Started',
+                options: FFButtonOptions(
+                  width: 130,
+                  height: 40,
+                  color: Color(0xFFEC1417),
+                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                        fontFamily: 'Poppins',
+                        color: Colors.white,
+                      ),
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+import '../flutter_flow/flutter_flow_icon_button.dart';
+import '../flutter_flow/flutter_flow_radio_button.dart';
+import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
+import '../login/login_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class RegisterWidget extends StatefulWidget {
+  const RegisterWidget({Key? key}) : super(key: key);
+
+  @override
+  _RegisterWidgetState createState() => _RegisterWidgetState();
+}
+
+class _RegisterWidgetState extends State<RegisterWidget> {
+  String? radioButtonValue;
+  TextEditingController? textController1;
+  TextEditingController? textController2;
+  TextEditingController? textController3;
+
+  late bool passwordVisibility1;
+  TextEditingController? textController4;
+
+  late bool passwordVisibility2;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    textController1 = TextEditingController();
+    textController2 = TextEditingController();
+    textController3 = TextEditingController();
+    passwordVisibility1 = false;
+    textController4 = TextEditingController();
+    passwordVisibility2 = false;
+  }
+
+  @override
+  void dispose() {
+    textController1?.dispose();
+    textController2?.dispose();
+    textController3?.dispose();
+    textController4?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: Color(0xFFEEFAFF),
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: Color(0xFFFE0307),
+            size: 30,
+          ),
+          onPressed: () async {
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => LoginWidget(),
+              ),
+            );
+          },
+        ),
+        title: Text(
+          'Create Account',
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: 'Poppins',
+                color: Color(0xFFFA0B29),
+                fontSize: 22,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Container(
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                child: Image.network(
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ_8vBF65kC9qzcwTTcgSvtMm69LUtiMmbExXOaH6s5O-iMuBB7gIxGxAx2zGAmTXA3_E&usqp=CAU',
+                ),
+              ),
+              Divider(),
+              TextFormField(
+                controller: textController1,
+                autofocus: true,
+                obscureText: false,
+                decoration: InputDecoration(
+                  hintText: 'EMAIL',
+                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  errorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedErrorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  prefixIcon: Icon(
+                    Icons.email_outlined,
+                  ),
+                ),
+                style: FlutterFlowTheme.of(context).bodyText1,
+                keyboardType: TextInputType.emailAddress,
+              ),
+              Divider(),
+              TextFormField(
+                controller: textController2,
+                autofocus: true,
+                obscureText: false,
+                decoration: InputDecoration(
+                  hintText: 'PHONE NUMBER',
+                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  errorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedErrorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  prefixIcon: Icon(
+                    Icons.phone,
+                  ),
+                ),
+                style: FlutterFlowTheme.of(context).bodyText1,
+                keyboardType: TextInputType.number,
+              ),
+              Divider(),
+              TextFormField(
+                controller: textController3,
+                autofocus: true,
+                obscureText: !passwordVisibility1,
+                decoration: InputDecoration(
+                  hintText: 'PASSWORD',
+                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  errorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedErrorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  suffixIcon: InkWell(
+                    onTap: () => setState(
+                      () => passwordVisibility1 = !passwordVisibility1,
+                    ),
+                    focusNode: FocusNode(skipTraversal: true),
+                    child: Icon(
+                      passwordVisibility1
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                      color: Color(0xFF757575),
+                      size: 22,
+                    ),
+                  ),
+                ),
+                style: FlutterFlowTheme.of(context).bodyText1,
+                keyboardType: TextInputType.visiblePassword,
+              ),
+              Divider(),
+              TextFormField(
+                controller: textController4,
+                autofocus: true,
+                obscureText: !passwordVisibility2,
+                decoration: InputDecoration(
+                  hintText: 'CONFIRM PASSWORD',
+                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  errorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedErrorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  suffixIcon: InkWell(
+                    onTap: () => setState(
+                      () => passwordVisibility2 = !passwordVisibility2,
+                    ),
+                    focusNode: FocusNode(skipTraversal: true),
+                    child: Icon(
+                      passwordVisibility2
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                      color: Color(0xFF757575),
+                      size: 22,
+                    ),
+                  ),
+                ),
+                style: FlutterFlowTheme.of(context).bodyText1,
+                keyboardType: TextInputType.visiblePassword,
+              ),
+              Container(
+                height: 100,
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional(-0.54, -0.73),
+                      child: FlutterFlowRadioButton(
+                        options: ['MALE', 'FEMALE', 'OTHER'].toList(),
+                        onChanged: (value) {
+                          setState(() => radioButtonValue = value);
+                        },
+                        optionHeight: 25,
+                        textStyle:
+                            FlutterFlowTheme.of(context).bodyText1.override(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.black,
+                                ),
+                        buttonPosition: RadioButtonPosition.left,
+                        direction: Axis.vertical,
+                        radioButtonColor: Color(0xFFFA0B29),
+                        inactiveRadioButtonColor: Color(0x8A000000),
+                        toggleable: false,
+                        horizontalAlignment: WrapAlignment.start,
+                        verticalAlignment: WrapCrossAlignment.start,
+                      ),
+                    ),
+                    Align(
+                      alignment: AlignmentDirectional(-0.94, -0.88),
+                      child: Text(
+                        'GENDER:',
+                        style: FlutterFlowTheme.of(context).bodyText1,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Divider(),
+              Align(
+                alignment: AlignmentDirectional(0, 0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginWidget(),
+                      ),
+                    );
+                  },
+                  text: 'CREATE',
+                  options: FFButtonOptions(
+                    width: 130,
+                    height: 40,
+                    color: Color(0xFFFA0B29),
+                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Poppins',
+                          color: Color(0xFFEEFAFF),
+                        ),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+              Divider(),
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LoginWidget(),
+                    ),
+                  );
+                },
+                child: Text(
+                  'Already have an account?',
+                  style: FlutterFlowTheme.of(context).bodyText1,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+import '../dashboard/dashboard_widget.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
+import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_widgets.dart';
+import '../home_page/home_page_widget.dart';
+import '../register/register_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class LoginWidget extends StatefulWidget {
+  const LoginWidget({Key? key}) : super(key: key);
+
+  @override
+  _LoginWidgetState createState() => _LoginWidgetState();
+}
+
+class _LoginWidgetState extends State<LoginWidget> {
+  TextEditingController? textController1;
+  TextEditingController? textController2;
+
+  late bool passwordVisibility;
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DashboardWidget(),
+        ),
+      );
+    });
+
+    textController1 = TextEditingController();
+    textController2 = TextEditingController();
+    passwordVisibility = false;
+  }
+
+  @override
+  void dispose() {
+    textController1?.dispose();
+    textController2?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: Color(0xFFEEFAFF),
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: Color(0xFFFE0307),
+            size: 30,
+          ),
+          onPressed: () async {
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomePageWidget(),
+              ),
+            );
+          },
+        ),
+        title: Text(
+          'Login',
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: 'Poppins',
+                color: Color(0xFFFA0B29),
+                fontSize: 22,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+      ),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Image.network(
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS1ijSLxZfgCkp4x8Yj9HTP-DXLIXgKIYQesAUmIKd9LCB3HwPQWTQfJC-P8Nh317iCXY&usqp=CAU',
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.cover,
+              ),
+              TextFormField(
+                controller: textController1,
+                autofocus: true,
+                obscureText: false,
+                decoration: InputDecoration(
+                  hintText: ' EMAIL / PHONE NUMBER',
+                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  errorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedErrorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                ),
+                style: FlutterFlowTheme.of(context).bodyText1,
+                keyboardType: TextInputType.multiline,
+              ),
+              Divider(),
+              TextFormField(
+                controller: textController2,
+                autofocus: true,
+                obscureText: !passwordVisibility,
+                decoration: InputDecoration(
+                  hintText: 'PASSWORD',
+                  hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  errorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  focusedErrorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0x00000000),
+                      width: 1,
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(4.0),
+                      topRight: Radius.circular(4.0),
+                    ),
+                  ),
+                  suffixIcon: InkWell(
+                    onTap: () => setState(
+                      () => passwordVisibility = !passwordVisibility,
+                    ),
+                    focusNode: FocusNode(skipTraversal: true),
+                    child: Icon(
+                      passwordVisibility
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                      color: Color(0xFF757575),
+                      size: 22,
+                    ),
+                  ),
+                ),
+                style: FlutterFlowTheme.of(context).bodyText1,
+              ),
+              Divider(),
+              FFButtonWidget(
+                onPressed: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DashboardWidget(),
+                    ),
+                  );
+                },
+                text: 'Log in',
+                options: FFButtonOptions(
+                  width: 130,
+                  height: 40,
+                  color: Color(0xFFF80717),
+                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                        fontFamily: 'Poppins',
+                        color: FlutterFlowTheme.of(context).primaryBtnText,
+                      ),
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              Divider(),
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RegisterWidget(),
+                    ),
+                  );
+                },
+                child: Text(
+                  'CREATE  ACCOUNT',
+                  style: FlutterFlowTheme.of(context).bodyText1,
+                ),
+              ),
+              Divider(),
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RegisterWidget(),
+                    ),
+                  );
+                },
+                child: Text(
+                  'Forgot your password?',
+                  style: FlutterFlowTheme.of(context).bodyText1,
+                ),
+              ),
+              Divider(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+import '../emergency_contacts_and_symptoms_check/emergency_contacts_and_symptoms_check_widget.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
+import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
+import '../login/login_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class DashboardWidget extends StatefulWidget {
+  const DashboardWidget({Key? key}) : super(key: key);
+
+  @override
+  _DashboardWidgetState createState() => _DashboardWidgetState();
+}
+
+class _DashboardWidgetState extends State<DashboardWidget> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: Color(0xFFFE0307),
+            size: 30,
+          ),
+          onPressed: () async {
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => LoginWidget(),
+              ),
+            );
+          },
+        ),
+        title: Text(
+          'DASHBOARD',
+          style: FlutterFlowTheme.of(context).title2.override(
+                fontFamily: 'Poppins',
+                color: Color(0xFFFE0307),
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+      ),
+      backgroundColor: Color(0xFFFA0B29),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.network(
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUYJ2_NHt6sd5ZD46aVRD5bbF1E_MHJIpPag&usqp=CAU',
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.25,
+                fit: BoxFit.cover,
+              ),
+              Divider(),
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          EmergencyContactsAndSymptomsCheckWidget(),
+                    ),
+                  );
+                },
+                child: Image.network(
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTe1cE7Ocbw8BEUxbZxLDiz4XlL92_rZpd_Q&usqp=CAU',
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          EmergencyContactsAndSymptomsCheckWidget(),
+                    ),
+                  );
+                },
+                child: Text(
+                  'Systoms Check',
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Poppins',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w800,
+                      ),
+                ),
+              ),
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          EmergencyContactsAndSymptomsCheckWidget(),
+                    ),
+                  );
+                },
+                child: Image.network(
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNIyTkqMe-qcGqEs0E1NpxyA75S03vPGhCag&usqp=CAU',
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          EmergencyContactsAndSymptomsCheckWidget(),
+                    ),
+                  );
+                },
+                child: Text(
+                  ' Emergency Contacts',
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Poppins',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w800,
+                      ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+import '../dashboard/dashboard_widget.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
+import '../flutter_flow/flutter_flow_theme.dart';
+import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/flutter_flow_web_view.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class EmergencyContactsAndSymptomsCheckWidget extends StatefulWidget {
+  const EmergencyContactsAndSymptomsCheckWidget({Key? key}) : super(key: key);
+
+  @override
+  _EmergencyContactsAndSymptomsCheckWidgetState createState() =>
+      _EmergencyContactsAndSymptomsCheckWidgetState();
+}
+
+class _EmergencyContactsAndSymptomsCheckWidgetState
+    extends State<EmergencyContactsAndSymptomsCheckWidget> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: Color(0xFFEEFAFF),
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: Color(0xFFFE0307),
+            size: 30,
+          ),
+          onPressed: () async {
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DashboardWidget(),
+              ),
+            );
+          },
+        ),
+        title: Align(
+          alignment: AlignmentDirectional(0, 0),
+          child: Text(
+            'Emergency Contacts',
+            textAlign: TextAlign.start,
+            style: FlutterFlowTheme.of(context).title2.override(
+                  fontFamily: 'Poppins',
+                  color: Color(0xFFFA0B29),
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 2,
+      ),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              FlutterFlowWebView(
+                url:
+                    'https://www.kimberley.co.za/places/kimberley/information/kimberley-emergency-numbers/',
+                bypass: false,
+                height: 400,
+                verticalScroll: false,
+                horizontalScroll: false,
+              ),
+              InkWell(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DashboardWidget(),
+                    ),
+                  );
+                },
+                child: Text(
+                  'Symptoms Check',
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Poppins',
+                        color: Color(0xFFFA0B29),
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+              ),
+              Divider(),
+              FlutterFlowWebView(
+                url: 'https://www.medifind.com/symptom-checker',
+                bypass: false,
+                height: 500,
+                verticalScroll: false,
+                horizontalScroll: false,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+  #import <MapKit/MapKit.h>
+
+#import <React/RCTViewManager.h>
+
+@interface RNTMapManager : RCTViewManager
+@end
+
+@implementation RNTMapManager
+
+RCT_EXPORT_MODULE(RNTMap)
+
+- (UIView *)view
+{
+  return [[MKMapView alloc] init];
+}
+
+@end
+  import { requireNativeComponent } from 'react-native';
+
+// requireNativeComponent automatically resolves 'RNTMap' to 'RNTMapManager'
+module.exports = requireNativeComponent('RNTMap');
+  import MapView from './MapView.js';
+
+...
+
+render() {
+  return <MapView style={{ flex: 1 }} />;
+}
+   render() {
+    return <MapView style={{flex: 1}} />;
+  }
+  RCT_EXPORT_VIEW_PROPERTY(zoomEnabled, BOOL)
+ <MapView zoomEnabled={false} style={{ flex: 1 }} />
+  import PropTypes from 'prop-types';
+import React from 'react';
+import { requireNativeComponent } from 'react-native';
+
+class MapView extends React.Component {
+  render() {
+    return <RNTMap {...this.props} />;
+  }
+}
+
+MapView.propTypes = {
+  /**
+   * A Boolean value that determines whether the user may use pinch
+   * gestures to zoom in and out of the map.
+   */
+  zoomEnabled: PropTypes.bool
+};
+
+var RNTMap = requireNativeComponent('RNTMap');
+
+module.exports = MapView;
+  RCT_CUSTOM_VIEW_PROPERTY(region, MKCoordinateRegion, MKMapView)
+{
+  [view setRegion:json ? [RCTConvert MKCoordinateRegion:json] : defaultView.region animated:YES];
+}
+  #import "RCTConvert+Mapkit.h"
+  #import <MapKit/MapKit.h>
+#import <React/RCTConvert.h>
+#import <CoreLocation/CoreLocation.h>
+#import <React/RCTConvert+CoreLocation.h>
+
+@interface RCTConvert (Mapkit)
+
++ (MKCoordinateSpan)MKCoordinateSpan:(id)json;
++ (MKCoordinateRegion)MKCoordinateRegion:(id)json;
+
+@end
+
+@implementation RCTConvert(MapKit)
+
++ (MKCoordinateSpan)MKCoordinateSpan:(id)json
+{
+  json = [self NSDictionary:json];
+  return (MKCoordinateSpan){
+    [self CLLocationDegrees:json[@"latitudeDelta"]],
+    [self CLLocationDegrees:json[@"longitudeDelta"]]
+  };
+}
+
++ (MKCoordinateRegion)MKCoordinateRegion:(id)json
+{
+  return (MKCoordinateRegion){
+    [self CLLocationCoordinate2D:json],
+    [self MKCoordinateSpan:json]
+  };
+}
+
+@end
+  MapView.propTypes = {
+  /**
+   * A Boolean value that determines whether the user may use pinch
+   * gestures to zoom in and out of the map.
+   */
+  zoomEnabled: PropTypes.bool,
+
+  /**
+   * The region to be displayed by the map.
+   *
+   * The region is defined by the center coordinates and the span of
+   * coordinates to display.
+   */
+  region: PropTypes.shape({
+    /**
+     * Coordinates for the center of the map.
+     */
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired,
+
+    /**
+     * Distance between the minimum and the maximum latitude/longitude
+     * to be displayed.
+     */
+    latitudeDelta: PropTypes.number.isRequired,
+    longitudeDelta: PropTypes.number.isRequired
+  })
+};
+  render() {
+  var region = {
+    latitude: 37.48,
+    longitude: -122.16,
+    latitudeDelta: 0.1,
+    longitudeDelta: 0.1,
+  };
+  return (
+    <MapView
+      region={region}
+      zoomEnabled={false}
+      style={{ flex: 1 }}
+    />
+  );
+}
+  #import <MapKit/MapKit.h>
+
+#import <React/RCTComponent.h>
+
+@interface RNTMapView: MKMapView
+
+@property (nonatomic, copy) RCTBubblingEventBlock onRegionChange;
+
+@end
+  #import "RNTMapView.h"
+
+@implementation RNTMapView
+
+@end
+ #import <MapKit/MapKit.h>
+#import <React/RCTViewManager.h>
+
+#import "RNTMapView.h"
+#import "RCTConvert+Mapkit.h"
+
+@interface RNTMapManager : RCTViewManager <MKMapViewDelegate>
+@end
+
+@implementation RNTMapManager
+
+RCT_EXPORT_MODULE()
+
+RCT_EXPORT_VIEW_PROPERTY(zoomEnabled, BOOL)
+RCT_EXPORT_VIEW_PROPERTY(onRegionChange, RCTBubblingEventBlock)
+
+RCT_CUSTOM_VIEW_PROPERTY(region, MKCoordinateRegion, MKMapView)
+{
+    [view setRegion:json ? [RCTConvert MKCoordinateRegion:json] : defaultView.region animated:YES];
+}
+
+- (UIView *)view
+{
+  RNTMapView *map = [RNTMapView new];
+  map.delegate = self;
+  return map;
+}
+
+#pragma mark MKMapViewDelegate
+
+- (void)mapView:(RNTMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+  if (!mapView.onRegionChange) {
+    return;
+  }
+
+  MKCoordinateRegion region = mapView.region;
+  mapView.onRegionChange(@{
+    @"region": @{
+      @"latitude": @(region.center.latitude),
+      @"longitude": @(region.center.longitude),
+      @"latitudeDelta": @(region.span.latitudeDelta),
+      @"longitudeDelta": @(region.span.longitudeDelta),
+    }
+  });
+}
+@end
+  #import <MapKit/MapKit.h>
+#import <React/RCTViewManager.h>
+
+#import "RNTMapView.h"
+#import "RCTConvert+Mapkit.h"
+
+@interface RNTMapManager : RCTViewManager <MKMapViewDelegate>
+@end
+
+@implementation RNTMapManager
+
+RCT_EXPORT_MODULE()
+
+RCT_EXPORT_VIEW_PROPERTY(zoomEnabled, BOOL)
+RCT_EXPORT_VIEW_PROPERTY(onRegionChange, RCTBubblingEventBlock)
+
+RCT_CUSTOM_VIEW_PROPERTY(region, MKCoordinateRegion, MKMapView)
+{
+    [view setRegion:json ? [RCTConvert MKCoordinateRegion:json] : defaultView.region animated:YES];
+}
+
+- (UIView *)view
+{
+  RNTMapView *map = [RNTMapView new];
+  map.delegate = self;
+  return map;
+}
+
+#pragma mark MKMapViewDelegate
+
+- (void)mapView:(RNTMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+  if (!mapView.onRegionChange) {
+    return;
+  }
+
+  MKCoordinateRegion region = mapView.region;
+  mapView.onRegionChange(@{
+    @"region": @{
+      @"latitude": @(region.center.latitude),
+      @"longitude": @(region.center.longitude),
+      @"latitudeDelta": @(region.span.latitudeDelta),
+      @"longitudeDelta": @(region.span.longitudeDelta),
+    }
+  });
+}
+@end
+  class MapView extends React.Component {
+  _onRegionChange = (event) => {
+    if (!this.props.onRegionChange) {
+      return;
+    }
+
+    // process raw event...
+    this.props.onRegionChange(event.nativeEvent);
+  };
+  render() {
+    return (
+      <RNTMap
+        {...this.props}
+        onRegionChange={this._onRegionChange}
+      />
+    );
+  }
+}
+MapView.propTypes = {
+  /**
+   * Callback that is called continuously when the user is dragging the map.
+   */
+  onRegionChange: PropTypes.func,
+  ...
+};
+  class MyApp extends React.Component {
+  onRegionChange(event) {
+    // Do stuff with event.region.latitude, etc.
+  }
+
+  render() {
+    var region = {
+      latitude: 37.48,
+      longitude: -122.16,
+      latitudeDelta: 0.1,
+      longitudeDelta: 0.1
+    };
+    return (
+      <MapView
+        region={region}
+        zoomEnabled={false}
+        onRegionChange={this.onRegionChange}
+      />
+    );
+  }
+}
+  <View>
+  <MyNativeView />
+  <MyNativeView />
+  <Button />
+</View>
+  <View>
+  <MyNativeView ref={this.myNativeReference} />
+  <MyNativeView ref={this.myNativeReference2} />
+  <Button
+    onPress={() => {
+      this.myNativeReference.callNativeMethod();
+    }}
+  />
+</View>
+    class MyNativeView extends React.Component {
+  callNativeMethod = () => {
+    UIManager.dispatchViewManagerCommand(
+      ReactNative.findNodeHandle(this),
+      UIManager.getViewManagerConfig('RNCMyNativeView').Commands
+        .callNativeMethod,
+      []
+    );
+  };
+
+  render() {
+    return <NativeComponent ref={NATIVE_COMPONENT_REF} />;
+  }
+}
+ #import <React/RCTViewManager.h>
+#import <React/RCTUIManager.h>
+#import <React/RCTLog.h>
+
+RCT_EXPORT_METHOD(callNativeMethod:(nonnull NSNumber*) reactTag) {
+    [self.bridge.uiManager addUIBlock:^(RCTUIManager *uiManager, NSDictionary<NSNumber *,UIView *> *viewRegistry) {
+        NativeView *view = viewRegistry[reactTag];
+        if (!view || ![view isKindOfClass:[NativeView class]]) {
+            RCTLogError(@"Cannot find NativeView with tag #%@", reactTag);
+            return;
+        }
+        [view callNativeMethod];
+    }];
+
+}
+    import { UIManager } from 'react-native';
+var RCTDatePickerIOSConsts = UIManager.RCTDatePicker.Constants;
+...
+  render: function() {
+    return (
+      <View style={this.props.style}>
+        <RCTDatePickerIOS
+          ref={DATEPICKER}
+          style={styles.rkDatePickerIOS}
+          ...
+        />
+      </View>
+    );
+  }
+});
+
+var styles = StyleSheet.create({
+  rkDatePickerIOS: {
+    height: RCTDatePickerIOSConsts.ComponentHeight,
+    width: RCTDatePickerIOSConsts.ComponentWidth,
+  },
+});
+    - (NSDictionary *)constantsToExport
+{
+  UIDatePicker *dp = [[UIDatePicker alloc] init];
+  [dp layoutIfNeeded];
+
+  return @{
+    @"ComponentHeight": @(CGRectGetHeight(dp.frame)),
+    @"ComponentWidth": @(CGRectGetWidth(dp.frame)),
+    @"DatePickerModes": @{
+      @"time": @(UIDatePickerModeTime),
+      @"date": @(UIDatePickerModeDate),
+      @"datetime": @(UIDatePickerModeDateAndTime),
+    }
+  };
+}
